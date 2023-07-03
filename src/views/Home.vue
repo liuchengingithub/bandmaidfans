@@ -29,7 +29,7 @@ export default {
   data: () => ({
     length: 6,
     onboarding: 0,
-    imgs: ['/src/assets/bandmaid.png', '../assets/kobato.jpg', '../assets/saiki.jpg', '../assets/kanami.jpg', '../assets/akane.jpg', '../assets/misa.jpg'],
+    imgs: ['./src/assets/bandmaid.png', './src/assets/kobato.jpg', '../assets/saiki.jpg', '../assets/kanami.jpg', '../assets/akane.jpg', '../assets/misa.jpg'],
     index: 0
   }),
   components: {
