@@ -7,59 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcome to Vuetify 3</title>
   <script async src="https://www.instagram.com/embed.js"></script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-  <script type="module" crossorigin src="/bandmaidfans/assets/index-923ccc37.js"></script>
+  <script type="module" crossorigin src="/bandmaidfans/assets/index-fd4f5598.js"></script>
   <link rel="stylesheet" href="/bandmaidfans/assets/index-e752755f.css">
 </head>
 
 <body>
-  <div id="app"></div>
-  
-  <script>
-
-    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-      console.log('statusChangeCallback');
-      console.log(response);                   // The current login status of the person.
-      if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-        testAPI();  
-      } else {                                 // Not logged into your webpage or we are unable to tell.
-        document.getElementById('status').innerHTML = 'Please log ' +
-          'into this webpage.';
-      }
-    }
+  <div id="app">
+    <div id="fb-root"></div>
+  </div>
   
   
-    function checkLoginState() {               // Called when a person is finished with the Login Button.
-      FB.getLoginStatus(function(response) {   // See the onlogin handler
-        statusChangeCallback(response);
-      });
-    }
-  
-  
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '224038990452598',
-        cookie     : true,                     // Enable cookies to allow the server to access the session.
-        xfbml      : true,                     // Parse social plugins on this webpage.
-        version    : 'v17.0'           // Use this Graph API version for this call.
-      });
-  
-  
-      FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-        statusChangeCallback(response);        // Returns the login status.
-      });
-    };
-   
-    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-      console.log('Welcome!  Fetching your information.... ');
-      FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
-      });
-    }
-  
-  </script>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/zh_CN/sdk.js#xfbml=1&version=v17.0&appId=224038990452598&autoLogAppEvents=1"
+    nonce="zrSaaHi3"></script>
 </body>
 
 </html>
