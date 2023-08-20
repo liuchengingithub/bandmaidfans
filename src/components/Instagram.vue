@@ -15,7 +15,7 @@
                 <v-card>
                     <v-row>
                         <v-col class="media">
-                            <video v-if="item.media_type === 'VIDEO'" controls width="436.5">
+                            <video v-if="item.media_type === 'VIDEO'" controls width="495">
                                 <source :src="item.media_url" type="video/mp4" />
                             </video>
                             <v-img v-else-if="item.media_type === 'IMAGE'" :src="item.media_url"></v-img>
@@ -38,11 +38,22 @@
                                         class="d-inline mx-2"></v-icon>
                                     <p class="d-inline caption">{{ item.caption }}</p>
                                     <div class="mt-2 timestamp">{{ this.$utils.dateFormatter(item.timestamp) }}</div>
+                                    <!-- <div>
+                                        {{ item.comments[0] }}
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="mt-auto bottom" style="width: 100%;">
                                 <v-divider></v-divider>
                                 <v-row class="mt-2 ">
+                                    <!-- <v-col>
+                                        <v-icon icon="mdi-heart-outline" size="large" class="mx-2"></v-icon>
+                                        <v-icon icon="mdi-comment-outline" size="large" class="mx-2"></v-icon>
+                                        <v-icon icon="mdi-send-outline" size="large" class="mx-2"></v-icon>
+                                    </v-col>
+                                    <v-col cols="2">
+                                        <v-icon icon="mdi-bookmark-outline" size="large" class="mx-2 justify-end"></v-icon>
+                                    </v-col> -->
                                     <v-col>
                                         <v-icon icon="mdi-heart-outline" size="large" class="mx-2"></v-icon>
                                         いいね！{{ item.like_count }}件
@@ -78,7 +89,7 @@ export default {
     },
     methods: {
         getMedia: async function () {
-            const response = await fetch(`https://graph.facebook.com/v17.0/${INSTAGRAM_BUSINESS_ACCOUNT}?fields=business_discovery.username(${this.member[this.memberId - 1]}){followers_count,media_count,media.limit(30){caption,media_url,permalink,timestamp,username,media_type,like_count,children{media_url}}}&access_token=${INSTAGRAM_ACCESS_TOKEN}`)
+            const response = await fetch(`https://graph.facebook.com/v17.0/17841458597605590?fields=business_discovery.username(${this.member[this.memberId - 1]}){followers_count,media_count,media.limit(30){caption,media_url,permalink,timestamp,username,media_type,like_count,children{media_url}}}&access_token=EAAzv9LenhZCkBOysdhxGWzNpeqXrnnUJbB6EvZCj9JyIgeuZAGMzRhOBFYg1jTreWEm5hXRy1J7i7L3RHpPndkCh7ZB4nYHutx1HSbrCGL6gYCp4mZAgZCLf97mZAHVGmUwZC0W1UzOghQ8sn4q6padC434kMwS57B0B4vq7ScGFaZBt0UVsYa5uu9Yshu5Luo64MOBck2A4OzSNpnBZCZA3JQpVjQUNwZDZD`)
             const data = await response.json()
             return data
         },
@@ -103,6 +114,7 @@ export default {
     mounted() {
         this.getMedia().then(res => this.media = res.business_discovery.media.data).catch(
         error => this.error = error)
+        // this.getInsInfo()
     }
 }
 </script>
