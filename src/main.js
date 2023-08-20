@@ -13,8 +13,12 @@ import { createApp } from 'vue'
 // Plugins
 import { registerPlugins } from '@/plugins'
 
+import utils from './common/utils'
+
 const app = createApp(App)
 
 registerPlugins(app)
 
 app.mount('#app')
+
+app.config.globalProperties.$utils = utils

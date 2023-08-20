@@ -1,9 +1,9 @@
 <template>
     <div class="twitter-timeline twitter-timeline-rendered"
-        style="display: flex; width: 600px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe
+        style="display: flex; margin-top: 0px; margin-bottom: 0px;"><iframe
             v-if="this.memberId" id="twitter-widget-1" scrolling="yes" frameborder="0" allowtransparency="true"
             allowfullscreen="true" class=""
-            style="position: static; visibility: visible; width: 600px; height: 400px; display: block; flex-grow: 1;"
+            style="position: static; visibility: visible; width: 900px; height: 500px; display: block; flex-grow: 1;"
             chrome="noheader" title="Twitter Timeline" :src="src"></iframe>
     </div>
 </template>
