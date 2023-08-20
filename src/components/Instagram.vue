@@ -38,22 +38,11 @@
                                         class="d-inline mx-2"></v-icon>
                                     <p class="d-inline caption">{{ item.caption }}</p>
                                     <div class="mt-2 timestamp">{{ this.$utils.dateFormatter(item.timestamp) }}</div>
-                                    <!-- <div>
-                                        {{ item.comments[0] }}
-                                    </div> -->
                                 </div>
                             </div>
                             <div class="mt-auto bottom" style="width: 100%;">
                                 <v-divider></v-divider>
                                 <v-row class="mt-2 ">
-                                    <!-- <v-col>
-                                        <v-icon icon="mdi-heart-outline" size="large" class="mx-2"></v-icon>
-                                        <v-icon icon="mdi-comment-outline" size="large" class="mx-2"></v-icon>
-                                        <v-icon icon="mdi-send-outline" size="large" class="mx-2"></v-icon>
-                                    </v-col>
-                                    <v-col cols="2">
-                                        <v-icon icon="mdi-bookmark-outline" size="large" class="mx-2 justify-end"></v-icon>
-                                    </v-col> -->
                                     <v-col>
                                         <v-icon icon="mdi-heart-outline" size="large" class="mx-2"></v-icon>
                                         いいね！{{ item.like_count }}件
@@ -89,26 +78,10 @@ export default {
     },
     methods: {
         getMedia: async function () {
-            const response = await fetch(`https://graph.facebook.com/v17.0/17841458597605590?fields=business_discovery.username(${this.member[this.memberId - 1]}){followers_count,media_count,media.limit(30){caption,media_url,permalink,timestamp,username,media_type,like_count,children{media_url}}}&access_token=EAAzv9LenhZCkBOysdhxGWzNpeqXrnnUJbB6EvZCj9JyIgeuZAGMzRhOBFYg1jTreWEm5hXRy1J7i7L3RHpPndkCh7ZB4nYHutx1HSbrCGL6gYCp4mZAgZCLf97mZAHVGmUwZC0W1UzOghQ8sn4q6padC434kMwS57B0B4vq7ScGFaZBt0UVsYa5uu9Yshu5Luo64MOBck2A4OzSNpnBZCZA3JQpVjQUNwZDZD`)
+            const response = await fetch(`https://graph.facebook.com/v17.0/${INSTAGRAM_BUSINESS_ACCOUNT}?fields=business_discovery.username(${this.member[this.memberId - 1]}){followers_count,media_count,media.limit(30){caption,media_url,permalink,timestamp,username,media_type,like_count,children{media_url}}}&access_token=${INSTAGRAM_ACCESS_TOKEN}`)
             const data = await response.json()
             return data
         },
-        // getComments: async function (mediaId) {
-        //     const response = await fetch(`https://graph.facebook.com/v17.0/${mediaId})/comments`)
-        //     const data = await response.json()
-        //     return data
-        // },
-        // getInsInfo: async function () {
-        //     const mediaRes = await fetch(`https://graph.facebook.com/v17.0/17841458597605590?fields=business_discovery.username(${this.member[this.memberId - 1]}){followers_count,media_count,media.limit(30){caption,media_url,permalink,timestamp,username,media_type,like_count,children{media_url}}}&access_token=EAAzv9LenhZCkBAMzYAomm1LQL4qqZBlg0NjdazSL366ytdgFo07s6ZCRBovROo5QOZBdmJNP7xuYQyHGZAbyAE7Ru0WZCvdAxyi3Fubuuyet6XhkDp4x3eP3sCFnSQimjyUMlhPOSs2Rlovlw7YWXvCoIDtlnWxddcdUIMbapRgreAGgGBhvIM`)
-        //     const mediaJSON = await mediaRes.json()
-        //     this.media = mediaJSON.business_discovery.media.data
-        //     for(let item of this.media){
-        //         console.log(item)
-        //         const commentsRes = await fetch(`https://graph.facebook.com/v17.0/${item.id}/comments&access_token=EAAzv9LenhZCkBAMzYAomm1LQL4qqZBlg0NjdazSL366ytdgFo07s6ZCRBovROo5QOZBdmJNP7xuYQyHGZAbyAE7Ru0WZCvdAxyi3Fubuuyet6XhkDp4x3eP3sCFnSQimjyUMlhPOSs2Rlovlw7YWXvCoIDtlnWxddcdUIMbapRgreAGgGBhvIM`)
-        //         const commentsJSON = await commentsRes.json()
-        //         item.comments = commentsJSON
-        //     }
-        // }
         
     },
     mounted() {
