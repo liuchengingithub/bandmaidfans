@@ -15,7 +15,7 @@
                 <v-card>
                     <v-row>
                         <v-col class="media">
-                            <video v-if="item.media_type === 'VIDEO'" controls width="495">
+                            <video v-if="item.media_type === 'VIDEO'" controls width="465.5">
                                 <source :src="item.media_url" type="video/mp4" />
                             </video>
                             <v-img v-else-if="item.media_type === 'IMAGE'" :src="item.media_url"></v-img>
